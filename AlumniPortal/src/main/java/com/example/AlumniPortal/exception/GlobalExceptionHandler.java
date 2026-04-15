@@ -56,7 +56,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(Exception ex) {
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Something went wrong", List.of());
+        // Log the actual exception for debugging
+        System.err.println("Unhandled exception: " + ex.getClass().getName() + " - " + ex.getMessage());
+        ex.printStackTrace();
+
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR,
+                           "Something went wrong",
+                           List.of(ex.getClass().getSimpleName() + ": " + ex.getMessage()));
     }
 
     private ResponseEntity<ErrorResponse> buildResponse(HttpStatus status,
