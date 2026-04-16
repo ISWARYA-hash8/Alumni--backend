@@ -122,7 +122,8 @@ public class AlumniProfileService {
                 profile.getSkills(),
                 profile.getProfession(),
                 profile.getLocation(),
-                profile.getLinkedinUrl()
+                profile.getLinkedinUrl(),
+                profile.getProfilePhoto() 
         );
     }
 
