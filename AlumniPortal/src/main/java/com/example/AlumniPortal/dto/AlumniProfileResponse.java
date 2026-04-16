@@ -18,5 +18,5 @@ public class AlumniProfileResponse {
     private String location;
     private String contact;
     private String linkedinUrl;
-    private String photoUrl;
+    private String profilePhoto;
 }
