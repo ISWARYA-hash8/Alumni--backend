@@ -56,7 +56,7 @@ public class AlumniProfileService {
         profile.setLocation(request.getLocation());
         profile.setContact(request.getContact());
         profile.setLinkedinUrl(normalizeLinkedinUrl(request.getLinkedinUrl()));
-        profile.setPhotoUrl(normalizePhotoUrl(request.getPhotoUrl()));
+        profile.setProfilePhoto(request.getProfilePhoto());
 
         repository.save(profile);
         userRepository.findById(userId).ifPresent(user -> {
@@ -91,7 +91,8 @@ public class AlumniProfileService {
                 profile.getLocation(),
                 profile.getContact(),
                 profile.getLinkedinUrl(),
-                profile.getPhotoUrl()
+                profile.getProfilePhoto()
+
         );
     }
 
@@ -102,7 +103,6 @@ public class AlumniProfileService {
             return new AlumniDirectoryResponse(
                     user.getId(),
                     user.getEmail(),
-                    null,
                     null,
                     null,
                     null,
@@ -121,8 +121,7 @@ public class AlumniProfileService {
                 profile.getSkills(),
                 profile.getProfession(),
                 profile.getLocation(),
-                profile.getLinkedinUrl(),
-                profile.getPhotoUrl()
+                profile.getLinkedinUrl()
         );
     }
 
@@ -133,13 +132,5 @@ public class AlumniProfileService {
 
         String trimmed = linkedinUrl.trim();
         return trimmed.startsWith("http") ? trimmed : "https://" + trimmed;
-    }
-
-    private String normalizePhotoUrl(String photoUrl) {
-        if (photoUrl == null || photoUrl.isBlank()) {
-            return null;
-        }
-
-        return photoUrl.trim();
     }
 }
