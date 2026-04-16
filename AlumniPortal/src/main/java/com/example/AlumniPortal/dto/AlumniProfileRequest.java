@@ -40,6 +40,6 @@ public class AlumniProfileRequest {
             regexp = "^(|(https?://).+)$",
             message = "Photo URL must be a valid URL"
     )
-    private String photoUrl;
+    
     private String profilePhoto;
 }
