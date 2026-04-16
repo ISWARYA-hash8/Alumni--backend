@@ -29,5 +29,7 @@ public class AlumniProfile implements Serializable {
     private String location;      // City / Country
     private String contact;       // Personal email / phone
     private String linkedinUrl;
-    private String photoUrl;
+    @Lob
+    @Column(name = "profile_photo", columnDefinition = "LONGTEXT")
+    private String profilePhoto;
 }
